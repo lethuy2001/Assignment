@@ -1,0 +1,27 @@
+<div class="container mt-5" ng-controller="mySubject">
+    <div class="row d-flex  justify-content-evenly" >
+        <a ng-repeat="sb in subjects | limitTo : 9 : indexOfPageSb * 9 " style="text-decoration: none; cursor: pointer;"  href="#cauHoi/{{sb.Id}}"
+            class="col-12 col-md-6 col-lg-3 card p-0 m-3 text-center"
+             >
+            <img src="./img/logos/{{sb.Logo}}" class="rounded mx-auto d-block" alt="">
+            <div class="card-footer">{{sb.Name}}</div>
+        </a>
+    </div>
+    <div class="row">
+        <nav aria-label="Page navigation example" class="col-12  d-flex justify-content-center" >
+            <ul class="pagination">
+                <li class="page-item">
+                    <button class="page-link"  ng-click="pagingSubjects(0)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </button>
+                </li>
+                <li class="page-item" ng-repeat=" a in numberOfPageSb"><button class="page-link" ng-click="pagingSubjects(a)">{{a +1}}</button></li>
+                <li class="page-item">
+                    <button class="page-link"  aria-label="Next" ng-click="pagingSubjects( numberOfPageSb.length - 1 )">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

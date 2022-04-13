@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Chủ</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body ng-app="myApp">
+  <div class="container-fluid" ng-controller="myCtrl">
+    <!-- Phần navbar -->
+    <div class="" ng-include="'Main/narbar.html'"></div>
+
+    <div class="ng-view">
+
+    </div>
+
+
+    <!-- Phần cuối trang -->
+    <div class="" ng-include="'Main/footer.html'"></div>
+  </div>
+
+
+
+  <script src="js/angularjs.min.js"></script>
+  <script src="js/angular-route.js"></script>
+
+  <script>
+    var app = angular.module("myApp", ["ngRoute"])
+
+    app.config(function ($locationProvider, $routeProvider) {
+      $locationProvider.hashPrefix("");
+
+      $routeProvider
+        .when("/trangChu", {
+          templateUrl: "Main/TrangChu.html"
+        })
+        .when("/gioiThieu", {
+          templateUrl: "Main/GioiThieu.html"
+        })
+        .when("/lienHe", {
+          templateUrl: "Main/LienHe.html"
+        })
+        .when("/quanLyUser", {
+          templateUrl: "Main/quanLyUser.html",
+        })
+        .when("/quanlycauhoi", {
+          templateUrl: "Main/quanlycauhoi.html",
+        })
+        .when("/quiz", {
+          templateUrl: "Main/quiz.html",
+        })
+        .when("/cauHoi/:Id", {
+          templateUrl: "Main/cauHoi.html",
+        })
+    })
+  </script>
+
+  <script src="controllers/student.js"></script>
+  <script src="controllers/subject.js"></script>
+  <script src="controllers/question.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

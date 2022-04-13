@@ -1,0 +1,241 @@
+    <!-- Phần header -->
+    <div class="container bg-light " >
+      <div class="row sticky-top align-items-center pe-3 ps-3" style="background-color: #fff;">
+        <!-- <div class="col-xxl-1"></div> -->
+        <div class=" col-12 col-lg-3 text-align header_title">
+          <img src="img/f8_icon.png" style="width: 36px; height: 36px;" alt="">
+          <span class="ms-2 fs-5">Học lập trình để làm gì</span>
+        </div>
+
+        <nav class="navbar navbar-expand-lg col-md-9 col-xxl-8 col-12">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <i class="fas fa-bars text-dark"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li class="nav-item">
+                  <a class="nav-link active fs-5"  aria-current="page" href="#trangChu">
+                    <i class="fas fa-home"></i>
+                    Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link  ms-2 fs-5" href="#gioiThieu">Giới thiệu</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link  ms-2 fs-5" href="#quiz">Làm Quiz</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link   ms-2 fs-5" href="#lienHe">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link  ms-2 fs-5" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Góp
+                    ý</a>
+                </li>
+
+              </ul>
+              <div class="dropdown d-flex">
+                <a class="dropdown-toggle nav-link fs-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <span ng-hide="checkAcount == true">Tài khoản</span>
+                  <span ng-hide="checkAcount == false">{{student.username}}</span>
+                </a>
+                <ul class="dropdown-menu fs-5" aria-labelledby="dropdownMenuButton1">
+                  <li><a ng-hide="checkAcount == true" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal2" >Đăng
+                      ký</a></li>
+                  <li><a ng-hide="checkAcount == true" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1" 
+                    >Đăng nhập</a></li>
+                  <li><a class="dropdown-item" href="#quanLyUser" ng-show="checkRole == 'Admin'">Quản lý người dùng</a></li>
+                  <li><a class="dropdown-item" href="#quanlycauhoi" ng-show="checkRole == 'Admin'" >Quản lý câu hỏi</a></li>
+                  <li><a class="dropdown-item"  ng-show="checkRole == 'user'" >Đổi mật khẩu</a></li>
+                  <li><a class="dropdown-item"  ng-hide="checkAcount == true" >Quên mật khẩu</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item"  ng-click="exitStudent()">Đăng xuất</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- form đăng nhập -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form action="" class="container" name="form_login">
+              <div class="row">
+                <div class="col-11">
+                  <h5 class="modal-title fs-3" id="exampleModalLabel">Đăng nhập</h5>
+                </div>
+                <div class="col-1 ">
+                  <button type="button" class="btn-close align-middle" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-12">
+                  <label for="acount">Tài khoản</label>
+                  <input type="text" class="form-control mt-1" id="acount" name="email" ng-model="student.email"
+                    required>
+                  <span class="text-danger" ng-hide="form_login.email.$valid || form_login.email.$untouched">Vui lòng
+                    không để trống tài khoản</span>
+                </div>
+                <div class="col-12 mt-4">
+                  <label for="password">Mật khẩu</label>
+                  <input type="password" class="form-control mt-1" id="password" name="password"
+                    ng-model="student.password" required>
+                  <span class="text-danger" ng-hide="form_login.password.$valid || form_login.password.$untouched">Vui
+                    lòng không để trống mật khẩu</span>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-12">
+                  <div class="alert alert-success" ng-show="checkLogin == 'sucess'" role="alert">
+                    Đăng nhập thành công
+                  </div>
+                  <div class="alert alert-danger" ng-show="checkLogin == 'error'" role="alert">
+                    Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản và mật khẩu
+                  </div>
+                  <button class="btn btn-primary form-control"  ng-click="loginStudent()">Đăng
+                    nhập</button>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-12 text-center">
+                  Đăng nhập với
+                </div>
+              </div>
+
+              <div class="row mt-4">
+                <div class="col-6">
+                  <a href="#" class="btn text-primary form-control border-secondary"> <i
+                      class="fab fa-facebook-square"></i> Facebook </a>
+                </div>
+                <div class="col-6">
+                  <a href="#" class="btn text-danger form-control border-secondary"> <i
+                      class="fab fa-youtube-square"></i>
+                    Youtobe </a>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 d-flex justify-content-end mt-3 mb-4">
+                  <div class="">
+                    <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" ng-click="student = [] ">Đăng ký</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+       <!-- Phần show đăng ký -->
+       <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <form action="" class="container" name="form_dk">
+                <div class="row">
+                  <div class="col-11">
+                    <h5 class="modal-title fs-3" id="exampleModalLabel">Đăng ký</h5>
+                  </div>
+                  <div class="col-1">
+                    <button type="button" class="btn-close align-middle" data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+                  </div>
+  
+                </div>
+                <div class="row mt-4">
+                  <div class="col-12 mt-3 ">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" class="form-control" id="name" name="name" ng-model="student.fullname" required>
+                    <span class="text-danger" ng-hide="form_dk.name.$valid || form_dk.name.$untouched">Vui lòng
+                      nhập tên</span>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <label for="date">Ngày sinh</label>
+                    <input type="date" class="form-control" id="date" name="date" ng-model="student.birthday">
+                    <span class="text-danger" ng-hide="form_dk.date.$valid || form_dk.date.$untouched">Vui lòng điền
+                      ngày sinh </span>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <label for="">Giới tính</label> <br>
+                    <input type="radio" name="gender" value="true"  ng-model="student.gender" checked> Nam
+                    <input type="radio" name="gender" value="false" class="ms-3" ng-model="student.gender"> Nữ
+                  </div>
+
+                  <div class="col-12 mt-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="txtemail" ng-model="student.email">
+                    <span class="text-danger" ng-hide="form_dk.txtemail.$valid || form_dk.txtemail.$untouched">Vui lòng
+                      điền email </span>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="username" name="username" ng-model="student.username"
+                      required>
+                    <span class="text-danger" ng-hide="form_dk.username.$valid || form_dk.username.$untouched">Vui lòng
+                      điền
+                      ngày sinh </span>
+                  </div>
+                  <div class="col-6 mt-3">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" name="password" ng-model="student.password"
+                      required>
+                    <span class="text-danger" ng-hide="form_dk.password.$valid || form_dk.password.$untouched">Vui lòng
+                      điền
+                      mật khẩu </span>
+                  </div>
+                  <div class="col-6 mt-3">
+                    <label for="password2">Xác nhận mật khẩu</label>
+                    <input type="password" class="form-control" id="password2" ng-model="password2" required>
+                    <div class="alert alert-danger" ng-show="checkPassword == false" role="alert">
+                       Mật khẩu không khớp
+                   </div>
+                  </div>
+  
+                  <div class="alert alert-success" ng-show="checkRegister == 'sucess'" role="alert">
+                    Đăng ký thành công
+                  </div>
+                  <div class="alert alert-danger" ng-show="checkRegister == 'error'" role="alert">
+                     Tài khoản đã tồn tại
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary form-control mt-3 mb-3"  ng-click="registerStudent()"> Đăng ký</button>
+                  </div>
+  
+                  <div class="col-12">
+                    <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1"  ng-click="student = [] ">Đăng nhập</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- phần show góp ý -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Góp ý</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Gửi</button>
+              <button type="button" class="btn btn-primary">Đóng</button>
+            </div>
+          </div>
+        </div>
+      </div>

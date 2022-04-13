@@ -1,0 +1,42 @@
+
+
+.navbar .nav-link{
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.navbar .nav-link:hover{
+    color: orangered;
+}
+
+@media screen and ( max-width: 768px) {
+    .img_slide {
+        display: none;
+    }
+
+}
+
+@media screen and ( max-width: 985px){
+    .header_title{
+        display: none;
+    }
+}
+
+@media screen and ( min-width: 1020px ){
+    .navbar .word{
+        padding-left: 25px;
+    }
+}
+
+@media screen and ( (max-width: 1081px ) and ( min-width: 990px )){
+    .navbar a{
+        font-size: 4px;
+    }
+}
+
+@media screen and ( min-width: 1300px ){
+    .navbar .word{
+        padding-left: 125px;
+    }
+}
